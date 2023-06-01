@@ -1,14 +1,4 @@
 const gridContainer = document.querySelector(".grid-container");
-const searchForm = document.querySelector(".search-group");
-
-// 검색
-const search = () => {
-  searchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const searchText = document.getElementById("movie-search-text").value;
-    makeCardList(searchText);
-  });
-};
 
 // 카드의 레이아웃을 구성하여 Grid container에 자식 추가
 const createCard = (payload) => {
@@ -55,6 +45,7 @@ const getMovieList = async () => {
   return data.results;
 };
 
+// 불러온 데이터를 반복 시키기
 const makeCardList = async () => {
   const movieList = await getMovieList();
 
@@ -69,7 +60,4 @@ const makeCardList = async () => {
   );
 };
 
-const init = () => {
-  makeCardList();
-};
-init();
+makeCardList();
